@@ -5,6 +5,7 @@ using UnityEngine;
 public class Teste : MonoBehaviour
 {
     [SerializeField] string _nome;
+    [SerializeField] int _number;
     void Start()
     {
         
