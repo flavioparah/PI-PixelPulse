@@ -7,6 +7,7 @@ public class Teste : MonoBehaviour
     [SerializeField] string _nome;
     [SerializeField] int _number;
     [SerializeField] float _dec;
+    [SerializeField] bool _check;
     void Start()
     {
         
