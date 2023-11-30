@@ -5,15 +5,17 @@ using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
 {
-    Rigidbody2D _rig;
+    [Header("Atributes")]
     [SerializeField] float _speed;
-    [SerializeField] float _moveH;
     [SerializeField] float _JumpFoce;
-    [SerializeField] bool _checkGround;
 
-    bool isFacingRight;
+    [Header("Components")]
     Animator _anim;
+    Rigidbody2D _rig;
 
+    private float _moveH;
+    bool isFacingRight;
+    bool _checkGround;
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
@@ -53,7 +55,8 @@ public class MovePlayer : MonoBehaviour
     {
         if (_checkGround == true && Input.GetAxisRaw("Jump") > 0 )
         {
-            _rig.AddForce(new Vector2(_rig.velocity.x, _JumpFoce), ForceMode2D.Impulse);
+            _rig.velocity = new Vector2(_rig.velocity.x, 0);
+            _rig.AddForce(new Vector2(0, _JumpFoce), ForceMode2D.Impulse);
         }
     }
 
@@ -100,7 +103,8 @@ public class MovePlayer : MonoBehaviour
     {
         if (_checkGround == true )
         {
-            _rig.AddForce(new Vector2(_rig.velocity.x, 3f), ForceMode2D.Impulse);
+            _rig.velocity = new Vector2(_rig.velocity.x, 0);
+            _rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
         }
     }
 
