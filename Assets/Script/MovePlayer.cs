@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -63,7 +63,9 @@ public class MovePlayer : MonoBehaviour
     void anim() 
     {
        float correr = Mathf.Abs(_moveH);
-      _anim.SetFloat("correr", correr);   
+      _anim.SetFloat("correr", correr);
+      _anim.SetBool("Pulo", _checkGround);
+      _anim.SetFloat("VelocidadeY", _rig.velocity.y);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
