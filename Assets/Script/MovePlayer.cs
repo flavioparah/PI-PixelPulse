@@ -63,7 +63,8 @@ public class MovePlayer : MonoBehaviour
     void anim() 
     {
        float correr = Mathf.Abs(_moveH);
-      _anim.SetFloat("correr", correr);   
+      _anim.SetFloat("correr", correr);
+       _anim.SetBool("Pulo", _checkGround);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
