@@ -6,16 +6,16 @@ using UnityEngine.InputSystem;
 public class MovePlayer : MonoBehaviour
 {
     [Header("Atributes")]
-    [SerializeField] float _speed;
-    [SerializeField] float _JumpFoce;
+    [SerializeField] float   _speed;
+    [SerializeField] float   _JumpFoce;
 
     [Header("Components")]
-    Animator _anim;
-    Rigidbody2D _rig;
+    Animator        _anim;
+    Rigidbody2D     _rig;
 
-    private float _moveH;
-    bool isFacingRight;
-    bool _checkGround;
+    private float   _moveH;
+    bool            isFacingRight;
+    bool            _checkGround;
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
@@ -62,9 +62,10 @@ public class MovePlayer : MonoBehaviour
 
     void anim() 
     {
-       float correr = Mathf.Abs(_moveH);
+        float correr = Mathf.Abs(_moveH);
       _anim.SetFloat("correr", correr);
-       _anim.SetBool("Pulo", _checkGround);
+      _anim.SetBool("Pulo", _checkGround);
+      _anim.SetFloat("VelocidadeY", _rig.velocity.y);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -20,7 +20,7 @@ public class RepeatGround : MonoBehaviour
             {
                 _ChaoInstranciado = true;
                 GameObject ObjectTemporarioChao = Instantiate(_scriptGround._GroundPrefab);
-                ObjectTemporarioChao.transform.position = new Vector3(transform.position.x + _scriptGround._GroundSize, transform.position.y,0);
+                ObjectTemporarioChao.transform.position = new Vector2(transform.position.x + _scriptGround._GroundSize, transform.position.y);
                 Debug.Log("O chao foi instaciado");
             }
         }
