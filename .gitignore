@@ -70,3 +70,14 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Anim/tucano.controller
+*.anim
+*.anim
+*.meta
+*.controller
+Assets/Anim/jump+shoting.anim
+Assets/Anim/jump+shoting.anim.meta
+Assets/Anim/tucano.controller
+Assets/Anim/jump+shoting.anim
+Assets/Anim/jump+shoting.anim.meta
+Assets/Anim/tucano.controller
