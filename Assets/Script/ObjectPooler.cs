@@ -46,24 +46,23 @@ public class ObjectPooler : MonoBehaviour
 
             poolDictionary.Add (pool._type, objectsPool);   
 
-        }
-
-        GameObject SpawnFromPool (string type, Vector3 position, Quaternion rotation)
+        } 
+    }
+    public GameObject SpawnFromPool(string type, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionary.ContainsKey(type))
         {
-            if (!poolDictionary.ContainsKey(type)) 
-            {
-                Debug.LogWarning("Pool With type: " + type + " doesn't exist.");
-                return null; 
-            }
-
-            objectToSpawn = poolDictionary[type].Dequeue();
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.rotation = rotation;
-
-            poolDictionary[type].Enqueue (objectToSpawn);
-
-            return objectToSpawn;
+            Debug.LogWarning("Pool With type: " + type + " doesn't exist.");
+            return null;
         }
+
+        objectToSpawn = poolDictionary[type].Dequeue();
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
+
+        poolDictionary[type].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
     }
 }

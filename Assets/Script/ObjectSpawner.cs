@@ -5,26 +5,20 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
 
-    [SerializeField] private float _Speed = 5f;
+    private bool _spawingObject = false;
 
-    [SerializeField] private float _ObjectDistance = -40f;
+    public static ObjectSpawner instance;
 
-    private bool CanSpawnGround = true;
-
-    private Rigidbody2D _rb;
-    void Start()
+    private void Awake()
     {
-
-      _rb = GetComponent<Rigidbody2D>();
-
+        instance = this;
     }
-    void Update()
+
+    public void SpawnGround()
     {
-
-        transform.position += -transform.forward * _Speed * Time.deltaTime;
-
-        if (transform.position.x <= _ObjectDistance) { }
-    }   
+        ObjectPooler.instance.SpawnFromPool("ground", new Vector3(0, 0, 60f), Quaternion.identity);      
+        
+    }
 }
 
 
