@@ -36,16 +36,5 @@ public class GroundController : MonoBehaviour
         transform.Translate(Vector2.left * _GroundSpeed * Time.deltaTime);
     }
 
-    void ChaoInstanciar()
-    {
-        if (!_ChaoInstanciado)
-        {
-           if (transform.position.x <= 0) 
-           {
-                _ChaoInstanciado = true;
-                GameObject ObjetoTemporarioChao
-                    
-           }
-        }
-    }
+   
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -12,14 +13,17 @@ public class MovePlayer : MonoBehaviour
     [Header("Components")]
     Animator        _anim;
     Rigidbody2D     _rig;
-
+    ControleCenario _controleCenario;
     private float   _moveH;
     bool            isFacingRight;
     bool            _checkGround;
+
+    public Transform _chaoTemp;
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _controleCenario = Camera.main.GetComponent<ControleCenario>();
     }
 
     // Update is called once per frame
@@ -72,7 +76,14 @@ public class MovePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _checkGround = true; 
-        }    
+        }
+
+        if (_chaoTemp!=null && collision.gameObject.CompareTag("triggerChao"))
+        {
+
+            _chaoTemp.transform.position = new Vector2(_chaoTemp.transform.localPosition.x + 38f, _chaoTemp.transform.localPosition.y);
+          //  Debug.Log("Passou");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -81,6 +92,12 @@ public class MovePlayer : MonoBehaviour
         {
             _checkGround = false;
 
+        }
+
+        if (collision.gameObject.CompareTag("triggerChao"))
+        {
+            _chaoTemp = collision.transform.parent;
+            Debug.Log("saiu");
         }
     }
     void Flip ()
