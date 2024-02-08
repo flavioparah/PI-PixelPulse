@@ -18,7 +18,7 @@ public class GroundControl : MonoBehaviour
         gtemp = gbase.gameObject;
         for (int i = 0; i < 2; i++)
         {
-            Invoke("CallGround", 0.2f);
+            Invoke("CallGround", 1);
         }
 
      
@@ -29,7 +29,7 @@ public class GroundControl : MonoBehaviour
         GameObject bullet = Ground.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
-            bullet.transform.localPosition = new Vector2(gtemp.transform.localPosition.x, gtemp.transform.localPosition.y);
+            bullet.transform.localPosition = new Vector2(gtemp.transform.localPosition.x+ 40f, gtemp.transform.localPosition.y);
             gtemp = bullet;
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             //bullet.transform.rotation = turret.transform.rotation;
