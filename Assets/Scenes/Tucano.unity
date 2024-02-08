@@ -1129,9 +1129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d305fc5561635eb458f23fe1fbe6f8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gbase: {fileID: 4622862888848930829}
-  gtemp: {fileID: 0}
-  speed: 5
 --- !u!114 &943001534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,9 +1141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018e1c25ac1277f4cb6aa9c7a899967c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 273569654276231076, guid: dc65a4b2ec08d0345bd7a4462aca4f4e, type: 3}
-  amountToPool: 2
 --- !u!114 &943001535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,10 +1153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e229e897740d344ba41439724b849b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GroundInstan: 0
-  _GroundSize: 0
-  _GroundSpeed: 5
-  _GroundPrefab: {fileID: 0}
 --- !u!1 &1290174059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,18 +1625,6 @@ Transform:
   - {fileID: 1495452889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &919647803756632389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2997522270162670843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2324797289693249790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1702,7 +1680,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4622862888848930829}
   - component: {fileID: 3355608434704668642}
-  - component: {fileID: 919647803756632389}
   - component: {fileID: 2324797289693249790}
   - component: {fileID: 4622862888848930830}
   m_Layer: 0
@@ -1788,12 +1765,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2997522270162670843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e229e897740d344ba41439724b849b, type: 3}
+  m_Script: {fileID: 11500000, guid: cb88c394ca7b1d640ae756b47f5f873f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GroundInstan: 10
-  _GroundSize: 10
-  _GroundSpeed: 10
+  _GroundInstan: 0
+  _GroundSize: 0
+  _GroundSpeed: 5
   _GroundPrefab: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

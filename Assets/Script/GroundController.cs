@@ -18,13 +18,18 @@ public class GroundController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpadte()
+    void FixedUpdate()
+    {
+        //MoverChao();
+    }
+
+    void Update()
     {
         MoverChao();
     }
 
     void MoverChao()
     {
-        transform.Translate(Vector2.left. * _GroundSpeed * Time.deltaTime);
+        transform.Translate(Vector2.left * _GroundSpeed * Time.deltaTime);
     }
 }

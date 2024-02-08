@@ -24,10 +24,10 @@ public class MoveComponent : MonoBehaviour
     {
         transform.position += -transform.forward * _Speed * Time.deltaTime;
         
-        if(transform.position.z <= _ObjectDistance && transform.tag == "Ground" && CanSpawnGround) 
+        //if(transform.position.z <= _ObjectDistance && transform.tag == "Ground" && CanSpawnGround) 
         {
-            ObjectSpawner.instance.SpawnGround();
-            CanSpawnGround = false;
+            //ObjectSpawner.instance.SpawnGround();
+            //anSpawnGround = false;
         
         }
     }
