@@ -1,31 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Android.LowLevel;
 using static UnityEditor.Progress;
 
 public class GroundControl : MonoBehaviour
 {
     public Transform gbase; 
     public GameObject gtemp;
-    private void Start()
+    [SerializeField] float speed = 5f;
+    private GroundController _groundController;
+
+
+    void Start()
     {
         //CallEnemies();
         gtemp = gbase.gameObject;
         for (int i = 0; i < 2; i++)
         {
-            Invoke("CallEnemies", 1);
+            Invoke("CallGround", 0.2f);
         }
-      
+
+     
     }
-    public void CallEnemies()
+  
+    public void CallGround()
     {
         GameObject bullet = Ground.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
-            bullet.transform.localPosition = new Vector2(gtemp.transform.localPosition.x+ 40.03f, gtemp.transform.localPosition.y);
+            bullet.transform.localPosition = new Vector2(gtemp.transform.localPosition.x, gtemp.transform.localPosition.y);
             gtemp = bullet;
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
             //bullet.transform.rotation = turret.transform.rotation;
-            bullet.SetActive(true);
+            bullet.SetActive(true);          
         }
     }
+   
 }
