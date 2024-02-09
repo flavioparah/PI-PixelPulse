@@ -9,7 +9,7 @@ public class GroundControl : MonoBehaviour
     public Transform gbase; 
     public GameObject gtemp;
     [SerializeField] float speed = 5f;
-    private GroundController _groundController;
+    private MoveGround _groundController;
 
 
     void Start()

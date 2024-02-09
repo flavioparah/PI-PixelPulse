@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class MoveGround : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public float _GroundSpeed;
+ 
+    void FixedUpdate()
     {
-        
+        MoverChao();
+    }
+    void MoverChao()
+    {
+        transform.Translate(Vector2.left * _GroundSpeed * Time.deltaTime);
     }
 }
