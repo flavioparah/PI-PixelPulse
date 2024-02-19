@@ -81,7 +81,7 @@ public class MovePlayer : MonoBehaviour
         {
 
             _chaoTemp.transform.position = new Vector2(_chaoTemp.transform.localPosition.x + 40f, _chaoTemp.transform.localPosition.y);
-          //  Debug.Log("Passou");
+            Debug.Log("Passou");
         }
     }
 
