@@ -539,11 +539,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1317867788 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4816000605020736857, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
-  m_PrefabInstance: {fileID: 1875274094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347831638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1029,7 @@ PrefabInstance:
       addedObject: {fileID: 1875274097}
     - targetCorrespondingSourceObject: {fileID: 9221784938565695700, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1875274105}
+      addedObject: {fileID: 1875274110}
   m_SourcePrefab: {fileID: 100100000, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
 --- !u!1 &1875274095 stripped
 GameObject:
@@ -1157,7 +1152,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8012542957993992375, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
   m_PrefabInstance: {fileID: 1875274094}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1875274105
+--- !u!114 &1875274110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1169,8 +1164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69482b051a0c39545be6e727ec054244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GunAnim: {fileID: 1373197120}
-  _Gun: {fileID: 1317867788}
+  _GunAnim: {fileID: 0}
+  _Gun: {fileID: 1795103449}
   _GunDistance: 0
 --- !u!61 &2324797289693249790
 BoxCollider2D:
