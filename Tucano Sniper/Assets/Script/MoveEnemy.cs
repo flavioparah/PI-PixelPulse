@@ -7,7 +7,6 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
-    [SerializeField] ControlBullet _bullet;
 
     Rigidbody2D _Rg;
     void Start()
@@ -37,13 +36,6 @@ public class MoveEnemy : MonoBehaviour
     void TimerDir()
     {
         _dir = false;
-
-
-    }
-
-    public void Atirar()
-    {
-        _bullet.Lacar();
 
 
     }
