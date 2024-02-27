@@ -8,11 +8,12 @@ public class Obstáculo_Control : MonoBehaviour
     [SerializeField] float _SpeedObstaculo;
     [SerializeField] float _ObstaculoTempo;
     [SerializeField] GameObject _ObstaculoPrefab;
+  
    
     void Start()
     {
         
-        StartCoroutine("SpawObstaculo");
+       StartCoroutine("SpawObstaculo");      
 
     }
 
@@ -26,4 +27,5 @@ public class Obstáculo_Control : MonoBehaviour
 
 
     }
+
 }
