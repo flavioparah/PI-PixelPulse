@@ -24,6 +24,6 @@ public class GunController : MonoBehaviour
 
     public void Shoot() 
     {
-        _GunAnim.SetTrigger("Shoot");
+       // _GunAnim.SetTrigger("Shoot");
     }
 }
