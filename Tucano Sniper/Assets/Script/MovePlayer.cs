@@ -18,6 +18,7 @@ public class MovePlayer : MonoBehaviour
     bool            _checkGround;
 
     public Transform _chaoTemp;
+    public Transform worldPosition;
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
@@ -29,6 +30,11 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         anim();
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        worldPosition.position = Camera.main.ScreenToWorldPoint(mousePos);
+
     }
 
     private void FixedUpdate()

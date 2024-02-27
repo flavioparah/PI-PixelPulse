@@ -21,4 +21,5 @@ public class ControlBullet : MonoBehaviour
         _Rg.velocity = Vector2.zero;
         _Rg.AddForce(-transform.right * force , ForceMode2D.Impulse);
     }
+
 }
