@@ -19,6 +19,8 @@ public class MovePlayer : MonoBehaviour
 
     public Transform _chaoTemp;
     public Transform worldPosition;
+
+    [SerializeField] ControlBullet _ControlBullet;
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
@@ -34,6 +36,12 @@ public class MovePlayer : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         worldPosition.position = Camera.main.ScreenToWorldPoint(mousePos);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            _ControlBullet.Lacar();
+            Debug.Log(Input.mousePosition);
+        }
 
     }
 
