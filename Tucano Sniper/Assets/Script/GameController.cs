@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class GameController : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class GameController : MonoBehaviour
     public int _TotalScore;
     public TMP_Text _ScoreText;
 
+    public int _Life;
     public int _TotalLife;
-    public TMP_Text _LifeText;
+    public Image[] _Coracao;
+    public Sprite _Cheio;
+    public Sprite _Vazio;
+
 
     public static GameController instance;
     void Start()
@@ -19,14 +24,45 @@ public class GameController : MonoBehaviour
         instance = this;
     }
 
+    void Update()
+    {
+        HealtLogic();
+    }
+
     public void UpdateScoreText()
     {
         _ScoreText.text = _TotalScore.ToString();
     }
 
-    public void UpdateScoreLife()
+    public void HealtLogic()
     {
-        _ScoreText.text = _LifeText.ToString();
+
+        if(_Life > _TotalLife) 
+        {
+            _Life = _TotalLife;
+        }
+
+        for (int i = 0; i < _Coracao.Length; i++)
+        {
+            if (i < _Life) 
+            {
+                _Coracao[i].sprite = _Cheio;
+            }
+            else 
+            {
+                _Coracao[i].sprite = _Vazio;
+            }
+
+            if (i < _TotalLife)
+            {
+                _Coracao[i].enabled = true;
+            }
+            else 
+            {
+                _Coracao[i].enabled = false;
+            }
+           
+        }
     }
 
 

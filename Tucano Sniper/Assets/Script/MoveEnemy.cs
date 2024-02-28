@@ -43,7 +43,9 @@ public class MoveEnemy : MonoBehaviour
 
     public void lancar() 
     {
-        _ControlBullet.Lacar();     
+        _ControlBullet.Lacar(); 
+        
+        
     }
 
 }

@@ -21,6 +21,7 @@ public class MovePlayer : MonoBehaviour
     public Transform worldPosition;
 
     [SerializeField] ControlBullet _ControlBullet;
+
     void Start()
     {
         _rig = GetComponent<Rigidbody2D>();
@@ -28,27 +29,18 @@ public class MovePlayer : MonoBehaviour
        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         anim();
-
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.nearClipPlane;
-        worldPosition.position = Camera.main.ScreenToWorldPoint(mousePos);
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            _ControlBullet.Lacar();
-            Debug.Log(Input.mousePosition);
-        }
+      
 
     }
 
     private void FixedUpdate()
     {
         move();
-        //Jump();
+        MouseControl();
     }
 
     void move() 
@@ -68,13 +60,19 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
-    void Jump() 
+    public void MouseControl() 
     {
-        if (_checkGround == true && Input.GetAxisRaw("Jump") > 0 )
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        worldPosition.position = Camera.main.ScreenToWorldPoint(mousePos);
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            _rig.velocity = new Vector2(_rig.velocity.x, 0);
-            _rig.AddForce(new Vector2(0, _JumpFoce), ForceMode2D.Impulse);
+            Debug.Log(Input.mousePosition);
+            _ControlBullet.LacarTucano();
         }
+
     }
 
     void anim() 
@@ -83,6 +81,7 @@ public class MovePlayer : MonoBehaviour
       _anim.SetFloat("correr", correr);
       _anim.SetBool("Pulo", _checkGround);
       _anim.SetFloat("VelocidadeY", _rig.velocity.y);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
