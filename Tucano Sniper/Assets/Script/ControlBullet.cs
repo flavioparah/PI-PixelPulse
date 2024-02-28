@@ -8,9 +8,11 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] Rigidbody2D _Rg;
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
+    private bool _colisaoDetectada = false;
+    GameController _gameController;
     void Start()
     {
-        GameController.FindAnyObjectByType(typeof(GameController));
+        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
         //Lacar();
     }
 
@@ -19,7 +21,7 @@ public class ControlBullet : MonoBehaviour
     {
         transform.position = _Pos.transform.position;
         _Rg.velocity = Vector2.zero;
-        _Rg.AddForce(-transform.right * force , ForceMode2D.Impulse);
+        _Rg.AddForce(-transform.right * force, ForceMode2D.Impulse);
     }
 
     public void LacarTucano()
@@ -32,14 +34,21 @@ public class ControlBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!_colisaoDetectada && collision.gameObject.CompareTag("Player"))
         {
-  
+            _gameController._Life -= 1;
+            _colisaoDetectada = true;
         }
 
         Debug.Log("Bala perdida");
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _colisaoDetectada = false;
+        }
 
-
+    }
 
 }
