@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstáculoMove : MonoBehaviour
 {
     [SerializeField] float _SpeedObstaculo;
+    public int _Score;
     void FixedUpdate()
     {
         Move();
@@ -19,7 +20,10 @@ public class ObstáculoMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("Colidiu");
+            Destroy(gameObject);
+
+            GameController.instance._TotalScore += _Score;
+            GameController.instance.UpdateScoreText();
         }
     }
 }

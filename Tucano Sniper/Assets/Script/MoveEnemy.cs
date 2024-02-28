@@ -7,6 +7,7 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
+    [SerializeField] ControlBullet _ControlBullet;
 
     Rigidbody2D _Rg;
     void Start()
@@ -38,6 +39,11 @@ public class MoveEnemy : MonoBehaviour
         _dir = false;
 
 
+    }
+
+    public void lancar() 
+    {
+        _ControlBullet.Lacar();     
     }
 
 }
