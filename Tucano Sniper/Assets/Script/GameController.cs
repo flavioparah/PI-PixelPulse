@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 public class GameController : MonoBehaviour
 {
-
+    [Header("Score")]
     public int _TotalScore;
     public TMP_Text _ScoreText;
 
+    [Header("Life")]
     public int _Life;
     public int _TotalLife;
     public Image[] _Coracao;
     public Sprite _Cheio;
     public Sprite _Vazio;
+
+    [Header("GameOver")]
+    public GameObject _GameOver;
 
 
     public static GameController instance;
@@ -63,6 +69,17 @@ public class GameController : MonoBehaviour
             }
            
         }
+    }
+
+    public void ShowGamerOver() 
+    {
+        _GameOver.SetActive(true);
+    }
+
+    public void RestartGame(string lvlName)
+    {
+        SceneManager.LoadScene(lvlName);
+        Time.timeScale = 1f;
     }
 
 

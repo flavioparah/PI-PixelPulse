@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Progress;
@@ -24,6 +25,8 @@ public class MovePlayer : MonoBehaviour
 
     void Start()
     {
+
+
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
        
@@ -83,11 +86,15 @@ public class MovePlayer : MonoBehaviour
       _anim.SetFloat("VelocidadeY", _rig.velocity.y);
 
     }
+
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Bala") && GameController.instance._Life == 0)
         {
-            _checkGround = true; 
+            GameController.instance.ShowGamerOver();
+            Destroy(gameObject);
+            Time.timeScale = 0f;
         }    
 
         if (_chaoTemp!=null && collision.gameObject.CompareTag("triggerChao"))
@@ -112,6 +119,7 @@ public class MovePlayer : MonoBehaviour
             Debug.Log("saiu");
         }
     }
+
     void Flip ()
     {
         isFacingRight = !isFacingRight;
