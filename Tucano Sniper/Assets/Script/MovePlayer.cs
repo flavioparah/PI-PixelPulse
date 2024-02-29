@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class MovePlayer : MonoBehaviour
@@ -12,20 +14,22 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] float   _JumpFoce;
 
     [Header("Components")]
-    Animator        _anim;
+    public Animator        _anim;
     public Rigidbody2D     _rig;  
     private float   _moveH;
     bool            isFacingRight;
     bool            _checkGround;
+    bool            _Hit;
 
     public Transform _chaoTemp;
     public Transform worldPosition;
 
     [SerializeField] ControlBullet _ControlBullet;
 
+    public static MovePlayer instance;
+
     void Start()
     {
-
 
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
@@ -78,24 +82,29 @@ public class MovePlayer : MonoBehaviour
 
     }
 
-    void anim() 
+    public void anim() 
     {
         float correr = Mathf.Abs(_moveH);
       _anim.SetFloat("correr", correr);
       _anim.SetBool("Pulo", _checkGround);
       _anim.SetFloat("VelocidadeY", _rig.velocity.y);
-
+  
     }
 
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bala") && GameController.instance._Life == 0)
+        if (collision.gameObject.CompareTag("Bala") && GameController.instance._Life <= 0)
         {
             GameController.instance.ShowGamerOver();
             Destroy(gameObject);
-            Time.timeScale = 0f;
-        }    
+            Time.timeScale = 0f;        
+        }
+        if (collision.gameObject.CompareTag("Bala"))
+        {
+            _anim.SetTrigger("Hit");
+        }
+
 
         if (_chaoTemp!=null && collision.gameObject.CompareTag("triggerChao"))
         {
@@ -117,6 +126,11 @@ public class MovePlayer : MonoBehaviour
         {
             _chaoTemp = collision.transform.parent;
             Debug.Log("saiu");
+        }
+
+        if (collision.gameObject.CompareTag("Bala"))
+        {
+            _anim.ResetTrigger("Hit");
         }
     }
 

@@ -38,9 +38,9 @@ public class ControlBullet : MonoBehaviour
         {
             _gameController._Life -= 1;
             _colisaoDetectada = true;
+       
         }
-
-        Debug.Log("Bala perdida");
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -49,6 +49,7 @@ public class ControlBullet : MonoBehaviour
             _colisaoDetectada = false;
         }
 
+       
     }
 
 }
