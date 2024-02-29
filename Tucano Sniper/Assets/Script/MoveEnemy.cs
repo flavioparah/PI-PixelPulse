@@ -8,6 +8,7 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
     [SerializeField] ControlBullet _ControlBullet;
+    [SerializeField] Transform _TransformLife;
 
     Rigidbody2D _Rg;
     void Start()
@@ -31,6 +32,14 @@ public class MoveEnemy : MonoBehaviour
             //transform.localScale = new Vector2(_scaleX, 2);
 
             Invoke("TimerDir", 0.5f);
+        }
+
+        if (collision.gameObject.CompareTag("BalaTucano"))
+        {
+            Vector3 theScale = _TransformLife.localScale;
+            theScale.x -= 1;
+            _TransformLife.localScale = theScale;
+            Debug.Log("Toma gato");
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Bloco
   - Bala
+  - BalaTucano
   layers:
   - Default
   - TransparentFX
