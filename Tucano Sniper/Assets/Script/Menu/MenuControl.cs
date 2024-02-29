@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SeguirBotao : MonoBehaviour
+public class MenuControl : MonoBehaviour
 {
-    public Button[] botoes;
-    public GameObject objetoSeguir;
+    [SerializeField] Button[] botoes;
+    public GameObject obj;
+
+    private void Start()
+    {
+        chamarMenu();
+    }
 
     void Update()
     {
 
         foreach (Button botao in botoes)
         {
-
             EventTrigger trigger = botao.gameObject.GetComponent<EventTrigger>();
             if (trigger == null)
             {
@@ -26,18 +31,21 @@ public class SeguirBotao : MonoBehaviour
             entryEnter.callback.AddListener((data) => { botaoEntrou(botao); });
             trigger.triggers.Add(entryEnter);
 
-
             if (botao.gameObject == UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject)
             {
-
-                objetoSeguir.transform.position = new Vector3(objetoSeguir.transform.position.x, botao.transform.position.y - 0.19f);
-                break;
+                obj.transform.position = new Vector3(obj.transform.position.x, botao.transform.position.y - 0.19f);
             }
+
         }
     }
 
-    public void botaoEntrou(Button botao)
+    void chamarMenu()
     {
-        objetoSeguir.transform.position = new Vector3(objetoSeguir.transform.position.x, botao.transform.position.y - 0.19f);
+        botoes[3].Select();
+    }
+
+    void botaoEntrou(Button botao) 
+    {
+        botao.Select();
     }
 }
