@@ -36,9 +36,7 @@ public class MoveEnemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BalaTucano"))
         {
-            Vector3 theScale = _TransformLife.localScale;
-            theScale.x -= 1;
-            _TransformLife.localScale = theScale;
+            
             Debug.Log("Toma gato");
         }
     }
