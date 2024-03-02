@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: bb877f7ec5b725f49bf5f41f36d4f02b
   - enabled: 1
-    path: Assets/Scenes/Gatuno.unity
-    guid: 991dc2678cc4f3c47a935cbbce3f2cb4
+    path: Assets/Scenes/Select-Level.unity
+    guid: f25179eec8f5d264b948907f3d621def
   - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: d98a6fbaa7f13a34dbf5c6752cea4974
+  - enabled: 1
+    path: Assets/Scenes/Tucano.unity
+    guid: 25a25573ccad04f36bc9f412a370ac13
   m_configObjects: {}
