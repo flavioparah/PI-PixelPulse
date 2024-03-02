@@ -42,7 +42,7 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         anim();
-      
+        showGameOverM();
 
     }
 
@@ -88,28 +88,24 @@ public class MovePlayer : MonoBehaviour
     {
         float correr = Mathf.Abs(_moveH);
       _anim.SetFloat("correr", correr);
-      _anim.SetBool("Pulo", _checkGround);
+      _anim.SetBool("Hit", _Hit);
       _anim.SetFloat("VelocidadeY", _rig.velocity.y);
-  
+      
     }
 
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bala") && GameController.instance._Life <= 0)
-        {
-            GameController.instance.ShowGamerOver();
-            Destroy(gameObject);
-            Time.timeScale = 0f;        
-        }
+       
 
         if (!_colisaoDetectada && collision.gameObject.CompareTag("Bala"))
         {
             _gameController._Life -= 1;
             _colisaoDetectada = true;
+            _Hit = true;
 
-        }
-        
+        }      
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -119,7 +115,20 @@ public class MovePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Bala"))
         {
             _colisaoDetectada = false;
+            _Hit = false;
+            Invoke("_Hit", 1.5f);
         }
+    }
+
+    void showGameOverM()
+    {
+        if ( GameController.instance._Life <= 0)
+        {
+            GameController.instance.ShowGamerOver();
+            Destroy(gameObject);
+            Time.timeScale = 0f;
+        }
+
     }
 
     void Flip ()
