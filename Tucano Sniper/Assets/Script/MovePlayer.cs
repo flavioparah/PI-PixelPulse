@@ -20,16 +20,18 @@ public class MovePlayer : MonoBehaviour
     bool            isFacingRight;
     bool            _checkGround;
     bool            _Hit;
+    bool            _colisaoDetectada = false;
 
-    public Transform _chaoTemp;
     public Transform worldPosition;
 
     [SerializeField] ControlBullet _ControlBullet;
 
     public static MovePlayer instance;
+    GameController _gameController;
 
     void Start()
     {
+        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
 
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
@@ -100,37 +102,23 @@ public class MovePlayer : MonoBehaviour
             Destroy(gameObject);
             Time.timeScale = 0f;        
         }
-        if (collision.gameObject.CompareTag("Bala"))
+
+        if (!_colisaoDetectada && collision.gameObject.CompareTag("Bala"))
         {
-            _anim.SetTrigger("Hit");
+            _gameController._Life -= 1;
+            _colisaoDetectada = true;
+
         }
-
-
-        if (_chaoTemp!=null && collision.gameObject.CompareTag("triggerChao"))
-        {
-
-            _chaoTemp.transform.position = new Vector2(_chaoTemp.transform.localPosition.x + 40f, _chaoTemp.transform.localPosition.y);
-            Debug.Log("Passou");
-        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _checkGround = false;
-
-        }
-       
-        if (collision.gameObject.CompareTag("triggerChao"))
-        {
-            _chaoTemp = collision.transform.parent;
-            Debug.Log("saiu");
-        }
+               
 
         if (collision.gameObject.CompareTag("Bala"))
         {
-            _anim.ResetTrigger("Hit");
+            _colisaoDetectada = false;
         }
     }
 

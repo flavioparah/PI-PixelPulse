@@ -32,24 +32,4 @@ public class ControlBullet : MonoBehaviour
         _Rg.AddForce(transform.right * force, ForceMode2D.Impulse);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!_colisaoDetectada && collision.gameObject.CompareTag("Player"))
-        {
-            _gameController._Life -= 1;
-            _colisaoDetectada = true;
-       
-        }
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _colisaoDetectada = false;
-        }
-
-       
-    }
-
 }
