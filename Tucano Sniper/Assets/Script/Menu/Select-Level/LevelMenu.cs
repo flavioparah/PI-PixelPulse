@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,18 @@ public class LevelMenu : MonoBehaviour
     [SerializeField] Button[] buttons;
     [SerializeField] Sprite disabledButtonSprite;
 
+    [SerializeField] List<Transform> _itens;
+
+    private void Start()
+    {
+
+        for (int i = 0; i < _itens.Count; i++)
+        {
+            _itens[i].localScale = Vector3.zero;
+        }
+
+        StartCoroutine(TimeItens());
+    }
     private void Awake()
     {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
@@ -45,5 +58,20 @@ public class LevelMenu : MonoBehaviour
     {
         SceneManager.LoadScene(levelId);
 
+    }
+
+    IEnumerator TimeItens()
+    {
+        for (int i = 0;i < _itens.Count;i++)
+        {
+            yield return new WaitForSeconds(.09f);
+
+            _itens[i].DOScale(0.7f, 0.25F);
+
+            yield return new WaitForSeconds(.09f);
+
+            _itens[i].DOScale(0.3642643f, 0.25F);
+
+        }
     }
 }

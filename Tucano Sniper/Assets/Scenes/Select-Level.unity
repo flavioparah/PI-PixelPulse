@@ -2986,6 +2986,15 @@ MonoBehaviour:
   - {fileID: 916288130}
   - {fileID: 424655346}
   disabledButtonSprite: {fileID: 1285531867, guid: f05f31107796b944486ac16dc95a06e1, type: 3}
+  _itens:
+  - {fileID: 1377280231}
+  - {fileID: 1568946189}
+  - {fileID: 2092754964}
+  - {fileID: 1551232528}
+  - {fileID: 505554902}
+  - {fileID: 2091628111}
+  - {fileID: 1917473911}
+  - {fileID: 1018152786}
 --- !u!95 &1416585651
 Animator:
   serializedVersion: 5
