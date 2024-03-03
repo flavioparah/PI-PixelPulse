@@ -8,7 +8,6 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] Rigidbody2D _Rg;
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
-    private bool _colisaoDetectada = false;
     GameController _gameController;
     void Start()
     {

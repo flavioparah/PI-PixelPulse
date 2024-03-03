@@ -12,13 +12,14 @@ public class MovePlayer : MonoBehaviour
     [Header("Atributes")]
     [SerializeField] float   _speed;
     [SerializeField] float   _JumpFoce;
+    [SerializeField] float _moveH;
 
     [Header("Components")]
-    public Animator        _anim;
-    public Rigidbody2D     _rig;  
-    private float   _moveH;
+    Animator               _anim;
+    public Rigidbody2D     _rig;
+
+
     bool            isFacingRight;
-    bool            _checkGround;
     bool            _Hit;
     bool            _colisaoDetectada = false;
 
@@ -35,7 +36,8 @@ public class MovePlayer : MonoBehaviour
 
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-       
+        
+
     }
 
     
@@ -98,25 +100,28 @@ public class MovePlayer : MonoBehaviour
     {
        
 
-        if (!_colisaoDetectada && collision.gameObject.CompareTag("Bala"))
+        if (collision.gameObject.CompareTag("Bala") && !_colisaoDetectada)
         {
             _gameController._Life -= 1;
             _colisaoDetectada = true;
-            _Hit = true;
+            _Hit = true;       
 
-        }      
+        }       
 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
                
-
         if (collision.gameObject.CompareTag("Bala"))
         {
             _colisaoDetectada = false;
-            _Hit = false;
-            Invoke("_Hit", 1.5f);
+          
+        }
+
+        if (collision.gameObject.CompareTag("Bala"))
+        {          
+            _Hit = false;         
         }
     }
 
@@ -140,6 +145,7 @@ public class MovePlayer : MonoBehaviour
 
     }
 
+
     public void SetMovimento(InputAction.CallbackContext value)
     {
         move();
@@ -151,10 +157,10 @@ public class MovePlayer : MonoBehaviour
     }
     void JumpC()
     {
-        if (_checkGround == true )
+        //if (_checkGround == true )
         {
-            _rig.velocity = new Vector2(_rig.velocity.x, 0);
-            _rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
+            //_rig.velocity = new Vector2(_rig.velocity.x, 0);
+            //_rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
         }
     }
 

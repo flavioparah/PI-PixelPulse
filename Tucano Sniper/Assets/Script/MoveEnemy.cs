@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveEnemy : MonoBehaviour
 {
+    public int _Life;
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
@@ -36,8 +37,8 @@ public class MoveEnemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BalaTucano"))
         {
-            
-            Debug.Log("Toma gato");
+
+            _Life = _Life - 1;
         }
     }
 
@@ -50,9 +51,15 @@ public class MoveEnemy : MonoBehaviour
 
     public void lancar() 
     {
-        _ControlBullet.Lacar(); 
+        _ControlBullet.Lacar();     
         
-        
+    }
+
+    public void Morrer()
+    {
+        _ControlBullet.Lacar();
+
+
     }
 
 }
