@@ -9,11 +9,13 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
     [SerializeField] ControlBullet _ControlBullet;
-    [SerializeField] Transform _TransformLife;
+    public static MoveEnemy instance;
+
 
     Rigidbody2D _Rg;
     void Start()
     {
+        instance = this;
         _Rg = GetComponent<Rigidbody2D>();
     }
 
@@ -21,6 +23,8 @@ public class MoveEnemy : MonoBehaviour
     void Update()
     {
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
+
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,17 +53,10 @@ public class MoveEnemy : MonoBehaviour
 
     }
 
-    public void lancar() 
-    {
-        _ControlBullet.Lacar();     
-        
-    }
-
-    public void Morrer()
+    public void lancar()
     {
         _ControlBullet.Lacar();
 
-
     }
 
-}
+}    
