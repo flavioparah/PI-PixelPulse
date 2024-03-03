@@ -11,12 +11,15 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] ControlBullet _ControlBullet;
     public static MoveEnemy instance;
 
+    [SerializeField] Animator _anim;
+
 
     Rigidbody2D _Rg;
     void Start()
     {
         instance = this;
         _Rg = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
 
@@ -43,6 +46,16 @@ public class MoveEnemy : MonoBehaviour
         {
 
             _Life = _Life - 1;
+
+            _anim.SetBool("Hit", true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BalaTucano"))
+        {
+            _anim.SetBool("Hit", false);
         }
     }
 
