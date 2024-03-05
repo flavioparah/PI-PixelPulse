@@ -95,7 +95,15 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+      "version": "1.8.4",
+=======
+      "version": "1.8.9",
+>>>>>>> dee92ca1ff3c42ee9e642ebc3f0232635ad19f1d
+=======
       "version": "1.8.8",
+>>>>>>> f6af0f3c275df3e3fb60760773a62f6c964f6236
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -138,8 +146,18 @@
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.2d.spriteshape": "9.0.2",
         "com.unity.2d.tilemap": "1.0.0",
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "com.unity.2d.tilemap.extras": "3.1.0",
+        "com.unity.2d.aseprite": "1.0.0"
+=======
+        "com.unity.2d.tilemap.extras": "3.1.2",
+        "com.unity.2d.aseprite": "1.0.1"
+>>>>>>> dee92ca1ff3c42ee9e642ebc3f0232635ad19f1d
+=======
         "com.unity.2d.tilemap.extras": "3.1.1",
         "com.unity.2d.aseprite": "1.0.0"
+>>>>>>> f6af0f3c275df3e3fb60760773a62f6c964f6236
       }
     },
     "com.unity.ide.rider": {
