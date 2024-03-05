@@ -17,7 +17,7 @@ public class MovePlayer : MonoBehaviour
     [Header("Components")]
     Animator               _anim;
     public Rigidbody2D     _rig;
-
+    [SerializeField] GameObject _FumacaTucano;
 
     bool            isFacingRight;
     bool            _Hit;
@@ -29,6 +29,9 @@ public class MovePlayer : MonoBehaviour
 
     public static MovePlayer instance;
     GameController _gameController;
+
+    [SerializeField] Transform _transformFum;
+    [SerializeField] Transform _transformTucano;
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class MovePlayer : MonoBehaviour
     {
         anim();
         showGameOverM();
+        _transformFum.position = new Vector2(_transformTucano.position.x, _transformTucano.position.y);
 
     }
 
@@ -147,6 +151,16 @@ public class MovePlayer : MonoBehaviour
             //_rig.velocity = new Vector2(_rig.velocity.x, 0);
             //_rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
         }
+    }
+
+    public void Dead()
+    {
+        if (GameController.instance. _Life <= 0)
+        {
+            Destroy(gameObject);
+            _FumacaTucano.SetActive(true);
+        }
+
     }
 
 

@@ -6,6 +6,8 @@ public class SpriterRendere : MonoBehaviour
 {
     public SpriteRenderer _Sprite;
     public bool _recovery = false;
+    bool _colisaoDetectada = false;
+    bool _Hit;
     void Start()
     {
         _Sprite = GetComponent<SpriteRenderer>();
@@ -29,13 +31,30 @@ public class SpriterRendere : MonoBehaviour
         _recovery = false;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Verifica se o objeto que entrou em contato tem a tag desejada
+
+
+        if (collision.gameObject.CompareTag("Bala") && !_colisaoDetectada)
+        {
+     
+            _colisaoDetectada = true;
+            Hit();
+
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
         if (collision.gameObject.CompareTag("Bala"))
         {
-            Hit();
-            Debug.Log("Transparente");
+            _colisaoDetectada = false;
+
         }
+
+        
     }
 }
