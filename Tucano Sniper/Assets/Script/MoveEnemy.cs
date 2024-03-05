@@ -10,6 +10,10 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] bool _dir;
     [SerializeField] ControlBullet _ControlBullet;
     public static MoveEnemy instance;
+    [SerializeField] Transform _transform;
+    [SerializeField] Transform _transformGato;
+
+    [SerializeField] GameObject _Fumaca;
 
     [SerializeField] Animator _anim;
 
@@ -17,6 +21,7 @@ public class MoveEnemy : MonoBehaviour
     Rigidbody2D _Rg;
     void Start()
     {
+        
         instance = this;
         _Rg = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
@@ -28,7 +33,7 @@ public class MoveEnemy : MonoBehaviour
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
         Dead();
 
-
+        _transform.position = new Vector2(_transformGato.position.x, _transformGato.position.y);
 
     }
 
@@ -79,8 +84,9 @@ public class MoveEnemy : MonoBehaviour
         if (_Life <= 0) 
         {
             Destroy(gameObject);
+            _Fumaca.SetActive(true);
         }
-
+        
     }
 
 }    
