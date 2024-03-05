@@ -22,16 +22,9 @@ public class SpriterRendere : MonoBehaviour
     {
         _recovery = true;
         _Sprite.color = new Color(0.8f, 0.3f, 0.3f, 1f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         _Sprite.color = new Color(1, 1, 1, 1);
-        yield return new WaitForSeconds(0.2f);
-        _Sprite.color = new Color(0.8f, 0.3f, 0.3f, 1f);
-        yield return new WaitForSeconds(0.2f);
-        _Sprite.color = new Color(1, 1, 1, 1);
-        yield return new WaitForSeconds(0.2f);
-        _Sprite.color = new Color(0.8f, 0.3f, 0.3f, 1f);
-        yield return new WaitForSeconds(0.2f);
-        _Sprite.color = new Color(1, 1, 1, 1);
+       
         
         _recovery = false;
     }
