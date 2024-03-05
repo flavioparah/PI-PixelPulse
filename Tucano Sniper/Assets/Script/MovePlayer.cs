@@ -60,15 +60,9 @@ public class MovePlayer : MonoBehaviour
 
         _rig.velocity = new Vector2(_moveH * _speed, _rig.velocity.y);
 
-        if (_moveH > 0 && isFacingRight == true)
-        {
-            Flip();
-        }
+      
 
-        else if (_moveH < 0 && isFacingRight == false)
-        {
-            Flip();
-        }
+        
     }
 
     public void MouseControl() 
@@ -133,15 +127,6 @@ public class MovePlayer : MonoBehaviour
             Destroy(gameObject);
             Time.timeScale = 0f;
         }
-
-    }
-
-    void Flip ()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
 
     }
 

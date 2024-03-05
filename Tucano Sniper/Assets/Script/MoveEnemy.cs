@@ -26,8 +26,10 @@ public class MoveEnemy : MonoBehaviour
     void Update()
     {
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
+        Dead();
 
-       
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,6 +71,15 @@ public class MoveEnemy : MonoBehaviour
     public void lancar()
     {
         _ControlBullet.Lacar();
+
+    }
+
+    public void Dead()
+    {
+        if (_Life <= 0) 
+        {
+            Destroy(gameObject);
+        }
 
     }
 
