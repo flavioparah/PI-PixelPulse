@@ -9,6 +9,7 @@ TagManager:
   - Bloco
   - Bala
   - BalaTucano
+  - Gold
   layers:
   - Default
   - TransparentFX

@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class MoveEnemy : MonoBehaviour
 {
+    public int _Life;
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
     [SerializeField] ControlBullet _ControlBullet;
-    [SerializeField] Transform _TransformLife;
+    public static MoveEnemy instance;
+
+    [SerializeField] Animator _anim;
+
 
     Rigidbody2D _Rg;
     void Start()
     {
+        instance = this;
         _Rg = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
 
     void Update()
     {
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
+
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,8 +44,18 @@ public class MoveEnemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BalaTucano"))
         {
-            
-            Debug.Log("Toma gato");
+
+            _Life = _Life - 1;
+
+            _anim.SetBool("Hit", true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BalaTucano"))
+        {
+            _anim.SetBool("Hit", false);
         }
     }
 
@@ -48,11 +66,10 @@ public class MoveEnemy : MonoBehaviour
 
     }
 
-    public void lancar() 
+    public void lancar()
     {
-        _ControlBullet.Lacar(); 
-        
-        
+        _ControlBullet.Lacar();
+
     }
 
-}
+}    

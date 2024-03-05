@@ -12,35 +12,39 @@ public class MovePlayer : MonoBehaviour
     [Header("Atributes")]
     [SerializeField] float   _speed;
     [SerializeField] float   _JumpFoce;
+    [SerializeField] float _moveH;
 
     [Header("Components")]
-    public Animator        _anim;
-    public Rigidbody2D     _rig;  
-    private float   _moveH;
-    bool            isFacingRight;
-    bool            _checkGround;
-    bool            _Hit;
+    Animator               _anim;
+    public Rigidbody2D     _rig;
 
-    public Transform _chaoTemp;
+
+    bool            isFacingRight;
+    bool            _Hit;
+    bool            _colisaoDetectada = false;
+
     public Transform worldPosition;
 
     [SerializeField] ControlBullet _ControlBullet;
 
     public static MovePlayer instance;
+    GameController _gameController;
 
     void Start()
     {
+        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
 
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-       
+        
+
     }
 
     
     void Update()
     {
         anim();
-      
+        showGameOverM();
 
     }
 
@@ -86,52 +90,50 @@ public class MovePlayer : MonoBehaviour
     {
         float correr = Mathf.Abs(_moveH);
       _anim.SetFloat("correr", correr);
-      _anim.SetBool("Pulo", _checkGround);
+      _anim.SetBool("Hit", _Hit);
       _anim.SetFloat("VelocidadeY", _rig.velocity.y);
-  
+      
     }
 
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bala") && GameController.instance._Life <= 0)
-        {
-            GameController.instance.ShowGamerOver();
-            Destroy(gameObject);
-            Time.timeScale = 0f;        
-        }
-        if (collision.gameObject.CompareTag("Bala"))
-        {
-            _anim.SetTrigger("Hit");
-        }
+       
 
-
-        if (_chaoTemp!=null && collision.gameObject.CompareTag("triggerChao"))
+        if (collision.gameObject.CompareTag("Bala") && !_colisaoDetectada)
         {
+            _gameController._Life -= 1;
+            _colisaoDetectada = true;
+            _Hit = true;       
 
-            _chaoTemp.transform.position = new Vector2(_chaoTemp.transform.localPosition.x + 40f, _chaoTemp.transform.localPosition.y);
-            Debug.Log("Passou");
-        }
+        }       
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+               
+        if (collision.gameObject.CompareTag("Bala"))
         {
-            _checkGround = false;
-
-        }
-       
-        if (collision.gameObject.CompareTag("triggerChao"))
-        {
-            _chaoTemp = collision.transform.parent;
-            Debug.Log("saiu");
+            _colisaoDetectada = false;
+          
         }
 
         if (collision.gameObject.CompareTag("Bala"))
-        {
-            _anim.ResetTrigger("Hit");
+        {          
+            _Hit = false;         
         }
+    }
+
+    void showGameOverM()
+    {
+        if ( GameController.instance._Life <= 0)
+        {
+            GameController.instance.ShowGamerOver();
+            Destroy(gameObject);
+            Time.timeScale = 0f;
+        }
+
     }
 
     void Flip ()
@@ -142,6 +144,7 @@ public class MovePlayer : MonoBehaviour
         transform.localScale = theScale;
 
     }
+
 
     public void SetMovimento(InputAction.CallbackContext value)
     {
@@ -154,10 +157,10 @@ public class MovePlayer : MonoBehaviour
     }
     void JumpC()
     {
-        if (_checkGround == true )
+        //if (_checkGround == true )
         {
-            _rig.velocity = new Vector2(_rig.velocity.x, 0);
-            _rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
+            //_rig.velocity = new Vector2(_rig.velocity.x, 0);
+            //_rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
         }
     }
 

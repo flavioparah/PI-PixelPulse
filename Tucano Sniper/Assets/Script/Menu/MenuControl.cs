@@ -33,7 +33,7 @@ public class MenuControl : MonoBehaviour
 
             if (botao.gameObject == UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject)
             {
-                obj.transform.position = new Vector3(obj.transform.position.x, botao.transform.position.y - 0.19f);
+                obj.transform.position = new Vector3(obj.transform.position.x, botao.transform.position.y - 0.13f);
             }
 
         }
