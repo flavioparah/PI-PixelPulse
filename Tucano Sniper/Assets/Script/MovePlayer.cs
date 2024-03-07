@@ -30,8 +30,9 @@ public class MovePlayer : MonoBehaviour
     public static MovePlayer instance;
     GameController _gameController;
 
-    [SerializeField] Transform _transformFum;
-    [SerializeField] Transform _transformTucano;
+    public float velocidadeMovimento = 5.0f;
+
+
 
     void Start()
     {
@@ -48,7 +49,18 @@ public class MovePlayer : MonoBehaviour
     {
         anim();
         showGameOverM();
-        _transformFum.position = new Vector2(_transformTucano.position.x, _transformTucano.position.y);
+
+        // Movimento para cima quando W é pressionado
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.up * velocidadeMovimento * Time.deltaTime);
+        }
+
+        // Movimento para baixo quando S é pressionado
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.down * velocidadeMovimento * Time.deltaTime);
+        }
 
     }
 
@@ -104,7 +116,8 @@ public class MovePlayer : MonoBehaviour
             _colisaoDetectada = true;
             _Hit = true;       
 
-        }       
+        }
+       
 
     }
 
@@ -114,7 +127,8 @@ public class MovePlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Bala"))
         {
             _colisaoDetectada = false;
-          
+            
+
         }
 
         if (collision.gameObject.CompareTag("Bala"))
@@ -157,7 +171,7 @@ public class MovePlayer : MonoBehaviour
         if (GameController.instance. _Life <= 0)
         {
             Destroy(gameObject);
-            _FumacaTucano.SetActive(true);
+            
         }
 
     }

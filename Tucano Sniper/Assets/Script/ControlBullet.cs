@@ -8,9 +8,12 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] Rigidbody2D _Rg;
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
+    [SerializeField] Transform _PosH;
     GameController _gameController;
+    public static ControlBullet instance;
     void Start()
     {
+        instance = this;
         _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
         //Lacar();
     }
@@ -30,5 +33,13 @@ public class ControlBullet : MonoBehaviour
         _Rg.velocity = Vector2.zero;
         _Rg.AddForce(transform.right * force, ForceMode2D.Impulse);
     }
+
+    public void LacarHeli()
+    {
+        transform.position = _PosH.transform.position;
+     
+    }
+
+   
 
 }
