@@ -11,6 +11,8 @@ TagManager:
   - BalaTucano
   - Gold
   - Grounds
+  - FxTemporaire
+  - Terreo
   layers:
   - Default
   - TransparentFX

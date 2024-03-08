@@ -1217,6 +1217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 9f04c51c82ff6af4fb38395c772ea956, type: 2}
+  _volumeSlider: {fileID: 656246869}
 --- !u!114 &1334971007
 MonoBehaviour:
   m_ObjectHideFlags: 0
