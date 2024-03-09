@@ -74,7 +74,20 @@ public class GameController : MonoBehaviour
     public void ShowGamerOver() 
     {
         _GameOver.SetActive(true);
+
+        StartCoroutine(ShowGameOverAnimation());
     }
+
+    IEnumerator ShowGameOverAnimation()
+    {
+
+
+        yield return new WaitForSeconds(0.5f);
+
+        Time.timeScale = 0f;
+    }
+
+
 
     public void RestartGame(string lvlName)
     {

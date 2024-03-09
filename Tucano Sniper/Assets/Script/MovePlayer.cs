@@ -129,11 +129,10 @@ public class MovePlayer : MonoBehaviour
         {
             GameController.instance.ShowGamerOver();
             Destroy(gameObject);
-            Time.timeScale = 0f;
+           
         }
 
     }
-
 
     public void SetMovimento(InputAction.CallbackContext value)
     {

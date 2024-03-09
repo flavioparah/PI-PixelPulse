@@ -10,6 +10,9 @@ TagManager:
   - Bala
   - BalaTucano
   - Gold
+  - Grounds
+  - FxTemporaire
+  - Terreo
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - LastGround
   - 
   - 
   - 

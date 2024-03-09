@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class AudioManager : MonoBehaviour
 {
     public string[] scenesToPlayAudioIn;
@@ -23,15 +25,16 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        // Defina a posição da música para a posição salva
+        
         GetComponent<AudioSource>().time = musicPosition;
-        // Inicie ou continue a reprodução da música
+       
         GetComponent<AudioSource>().Play();
+
     }
 
     void Update()
     {
-        // Salve a posição da música periodicamente
+       
         musicPosition = GetComponent<AudioSource>().time;
 
         string currentScene = SceneManager.GetActiveScene().name;
@@ -55,4 +58,5 @@ public class AudioManager : MonoBehaviour
             GetComponent<AudioSource>().Pause();
         }
     }
+
 }
