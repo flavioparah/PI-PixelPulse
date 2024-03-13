@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -48,7 +47,7 @@ public class MovePlayer : MonoBehaviour
     {
         anim();
         showGameOverM();
-        _transformFum.position = new Vector2(_transformTucano.position.x, _transformTucano.position.y);
+       // _transformFum.position = new Vector2(_transformTucano.position.x, _transformTucano.position.y);
 
     }
 
@@ -78,7 +77,6 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log(Input.mousePosition);
             _ControlBullet.LacarTucano();
         }
 

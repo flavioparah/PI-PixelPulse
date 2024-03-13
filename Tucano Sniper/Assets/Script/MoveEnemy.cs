@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour
 {
     public int _Life;
+
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
     [SerializeField] bool _dir;
@@ -17,14 +18,18 @@ public class MoveEnemy : MonoBehaviour
 
     [SerializeField] Animator _anim;
 
+    [SerializeField] healthBar _healthBar;
+
 
     Rigidbody2D _Rg;
     void Start()
     {
-        
+       
         instance = this;
         _Rg = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+
+        _healthBar.AlteraBarraDeVida(_Life);
     }
 
 
@@ -33,7 +38,7 @@ public class MoveEnemy : MonoBehaviour
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
         Dead();
 
-        _transform.position = new Vector2(_transformGato.position.x, _transformGato.position.y);
+        //_transform.position = new Vector2(_transformGato.position.x, _transformGato.position.y);
 
     }
 
@@ -55,6 +60,8 @@ public class MoveEnemy : MonoBehaviour
             _Life = _Life - 1;
 
             _anim.SetBool("Hit", true);
+
+            _healthBar.AlteraBarraDeVida(_Life);
         }
     }
 
