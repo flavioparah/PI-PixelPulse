@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3520079396651588102}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.15908809, w: -0.98726445}
   m_LocalPosition: {x: 0.026, y: 0.096, z: 0}
   m_LocalScale: {x: 1.0046048, y: 1.0425892, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5535488307520393391}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.535}
 --- !u!1001 &2962597000496334815
 PrefabInstance:
@@ -339,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957993992375, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957993992375, guid: 424f6bd0daab249db8216276c6e2204b, type: 3}
       propertyPath: m_LocalScale.x
@@ -486,10 +486,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _JumpFoce: 0
+  _JumpFoce: 2
   _moveH: 0
   _rig: {fileID: 0}
-  _FumacaTucano: {fileID: 0}
+  _FumacaTucano: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}
   worldPosition: {fileID: 4118560060056377945}
   _ControlBullet: {fileID: 0}
   _transformFum: {fileID: 0}
@@ -687,7 +687,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0022899508, y: -0.0005803108}
+  m_Offset: {x: 0.0022899508, y: -0.14226967}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -698,7 +698,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.78542024, y: 1.0910394}
+  m_Size: {x: 0.78542024, y: 0.8076607}
   m_EdgeRadius: 0
 --- !u!1 &8859699505529565927 stripped
 GameObject:
