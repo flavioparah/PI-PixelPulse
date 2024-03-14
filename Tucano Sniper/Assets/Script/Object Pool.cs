@@ -23,6 +23,7 @@ public class ObjectPool : MonoBehaviour
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
+
         }
     }
 

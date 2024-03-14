@@ -69,8 +69,15 @@ public class MoveEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BalaTucano"))
         {
-            _anim.SetBool("Hit", false);
+
+            StartCoroutine(timeAnimation());
         }
+    }
+
+    IEnumerator timeAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _anim.SetBool("Hit", false);
     }
 
     void TimerDir()
