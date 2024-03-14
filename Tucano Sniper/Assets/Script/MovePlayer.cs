@@ -125,11 +125,20 @@ public class MovePlayer : MonoBehaviour
     {
         if ( GameController.instance._Life <= 0)
         {
-            GameController.instance.ShowGamerOver();
-            Destroy(gameObject);
+            _colisaoDetectada = true;
+            _Hit = true;
+
+            StartCoroutine(timeShowGameOver());
            
         }
+    }
+    IEnumerator timeShowGameOver()
+    {
+        yield return new WaitForSeconds(0.1f);
 
+        Destroy(gameObject);
+
+        GameController.instance.ShowGamerOver();
     }
 
     public void SetMovimento(InputAction.CallbackContext value)
