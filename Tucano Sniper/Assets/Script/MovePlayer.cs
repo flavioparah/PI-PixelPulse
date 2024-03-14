@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -100,7 +100,7 @@ public class MovePlayer : MonoBehaviour
         {
             _gameController._Life -= 1;
             _colisaoDetectada = true;
-            _Hit = true;       
+            _Hit = true;      
 
         }       
 

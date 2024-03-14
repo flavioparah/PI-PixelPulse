@@ -80,12 +80,10 @@ public class GameController : MonoBehaviour
     IEnumerator ShowGameOverAnimation()
     {
 
-
         yield return new WaitForSeconds(0.5f);
 
         Time.timeScale = 0f;
     }
-
 
 
     public void RestartGame(string lvlName)
@@ -93,6 +91,4 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(lvlName);
         Time.timeScale = 1f;
     }
-
-
 }

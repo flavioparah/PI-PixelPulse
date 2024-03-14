@@ -12,7 +12,6 @@ public class ControlBullet : MonoBehaviour
     void Start()
     {
         _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
-        //Lacar();
     }
 
 
@@ -30,5 +29,4 @@ public class ControlBullet : MonoBehaviour
         _Rg.velocity = Vector2.zero;
         _Rg.AddForce(transform.right * force, ForceMode2D.Impulse);
     }
-
 }
