@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 5166295891109824126, guid: c63a41511435b4c51a74ed15c47b6b9f, type: 3}
   spawnRate: 7
+  start: 0
 --- !u!212 &269122979
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1636,6 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 5166295891109824126, guid: c63a41511435b4c51a74ed15c47b6b9f, type: 3}
   spawnRate: 11
+  start: 0
 --- !u!212 &1199712892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2401,7 +2403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5166295891109824126, guid: c63a41511435b4c51a74ed15c47b6b9f, type: 3}
-  spawnRate: 6.4
+  spawnRate: 4
+  start: 0
 --- !u!212 &1624859073
 SpriteRenderer:
   m_ObjectHideFlags: 0
