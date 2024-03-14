@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tucano.unity
     guid: 25a25573ccad04f36bc9f412a370ac13
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 307235dc96e484bda9ee68bd5ac97d48
+  - enabled: 1
+    path: Assets/Scenes/Score-screen.unity
+    guid: 0f8def0c4e42a4e84bf84c3856ea8ac8
   m_configObjects: {}
