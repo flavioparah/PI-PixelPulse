@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public float _jumpForce, _JumpY = 10f; // Força do pulo
-    public LayerMask _groundLayer; // Camada do chão
+    public float _jumpForce, _JumpY = 10f; // Forï¿½a do pulo
+    public LayerMask _groundLayer; // Camada do chï¿½o
     public LayerMask _lastGroundLayer;
-    public Transform _groundCheck; // Transform do objeto que verifica se o personagem está no chão
-    public float _groundCheckRadius = 0.1f; // Raio do círculo de verificação de colisão com o chão
+    public Transform _groundCheck; // Transform do objeto que verifica se o personagem estï¿½ no chï¿½o
+    public float _groundCheckRadius = 0.1f; // Raio do cï¿½rculo de verificaï¿½ï¿½o de colisï¿½o com o chï¿½o
 
     private bool _isGrounded;
     MovePlayer _movePlayer;
@@ -31,14 +31,14 @@ public class Jump : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
 
       
-        if (Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.S) && _isGrounded)
+        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
                 _movePlayer._rig.velocity = new Vector2(_movePlayer._rig.velocity.x, _jumpForce);
                 
         }
 
 
-        if (((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && Input.GetKeyDown(KeyCode.Space)) && _isGrounded && _canMove)
+        if (((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))) && _isGrounded && _canMove)
          {
 
                 _tucanoCollider.enabled = false;
