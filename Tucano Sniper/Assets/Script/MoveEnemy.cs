@@ -97,10 +97,17 @@ public class MoveEnemy : MonoBehaviour
     {
         if (_Life <= 0) 
         {
-            Destroy(gameObject);
-            _Fumaca.SetActive(true);
+            StartCoroutine(timeDead());
         }
         
+    }
+
+    IEnumerator timeDead()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Destroy(gameObject);
+        _Fumaca.SetActive(true);
     }
 
 }    
