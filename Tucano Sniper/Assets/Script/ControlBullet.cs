@@ -9,6 +9,8 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
     GameController _gameController;
+   
+    GameObject novaBala;
     void Start()
     {
         _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
@@ -24,9 +26,13 @@ public class ControlBullet : MonoBehaviour
 
     public void LacarTucano()
     {
-        transform.position = _Pos.transform.position;
-        transform.rotation = _Pos.transform.rotation;
-        _Rg.velocity = Vector2.zero;
-        _Rg.AddForce(transform.right * force, ForceMode2D.Impulse);
+        novaBala = Instantiate(gameObject);
+        novaBala.transform.position = _Pos.transform.position;
+        novaBala.transform.rotation = _Pos.transform.rotation;
+        Rigidbody2D rbBala = novaBala.GetComponent<Rigidbody2D>();
+        rbBala.velocity = Vector2.zero;
+        rbBala.AddForce(novaBala.transform.right * force, ForceMode2D.Impulse);
+
+        Destroy(novaBala, 1f);
     }
 }

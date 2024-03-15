@@ -61,6 +61,8 @@ public class MoveEnemy : MonoBehaviour
 
             _anim.SetBool("Hit", true);
 
+            Destroy(collision.gameObject);
+
             _healthBar.AlteraBarraDeVida(_Life);
         }
     }
