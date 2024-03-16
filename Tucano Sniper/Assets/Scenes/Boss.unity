@@ -3323,6 +3323,7 @@ MonoBehaviour:
   _Fumaca: {fileID: 0}
   _anim: {fileID: 1999320925}
   _healthBar: {fileID: 733549996}
+  hitParticlePrefab: {fileID: 0}
 --- !u!50 &1999320930
 Rigidbody2D:
   serializedVersion: 4

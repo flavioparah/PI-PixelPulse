@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class ControlBullet : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class ControlBullet : MonoBehaviour
     GameController _gameController;
    
     GameObject novaBala;
+
+    [SerializeField] ParticleSystem particles;
+
     void Start()
     {
         _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
@@ -35,4 +39,18 @@ public class ControlBullet : MonoBehaviour
 
         Destroy(novaBala, 1f);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Enemy"))
+
+        {
+            Vector2 hitPoint = collision.ClosestPoint(transform.position);
+
+            Instantiate(particles, hitPoint, Quaternion.identity);
+
+        }
+    }
+
 }

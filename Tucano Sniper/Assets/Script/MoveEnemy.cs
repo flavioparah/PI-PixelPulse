@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class MoveEnemy : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class MoveEnemy : MonoBehaviour
 
 
     Rigidbody2D _Rg;
+
     void Start()
     {
        
@@ -38,8 +40,6 @@ public class MoveEnemy : MonoBehaviour
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
         Dead();
 
-        //_transform.position = new Vector2(_transformGato.position.x, _transformGato.position.y);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,10 +47,9 @@ public class MoveEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bloco") && _dir == false)
         {
             _Speed = _Speed * -1;
-            //_scaleX = _scaleX * -2;
+      
             _dir = true;
-            //transform.localScale = new Vector2(_scaleX, 2);
-
+            
             Invoke("TimerDir", 0.5f);
         }
 
@@ -65,7 +64,9 @@ public class MoveEnemy : MonoBehaviour
 
             _healthBar.AlteraBarraDeVida(_Life);
         }
+
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -13,6 +13,7 @@ TagManager:
   - Grounds
   - FxTemporaire
   - Terreo
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,6 @@ public class MovePlayer : MonoBehaviour
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         
-
     }
 
     
