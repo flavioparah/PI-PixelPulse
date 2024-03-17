@@ -10,15 +10,18 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
     GameController _gameController;
-   
+    public AudioSource audioSource; 
+
     GameObject novaBala;
 
     [SerializeField] ParticleSystem particles;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
     }
+
 
 
     public void Lacar()
@@ -36,7 +39,7 @@ public class ControlBullet : MonoBehaviour
         Rigidbody2D rbBala = novaBala.GetComponent<Rigidbody2D>();
         rbBala.velocity = Vector2.zero;
         rbBala.AddForce(novaBala.transform.right * force, ForceMode2D.Impulse);
-
+        audioSource.Play();
         Destroy(novaBala, 1f);
     }
 
