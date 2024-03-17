@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -9,15 +10,19 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] Rigidbody2D _Rg;
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
-    GameController _gameController;
    
     GameObject novaBala;
 
     [SerializeField] ParticleSystem particles;
+    [SerializeField] ParticleSystem _fumacaEnemy;
+
+    [SerializeField] GameObject _item;
+
+    public static ControlBullet instance;
 
     void Start()
     {
-        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
+        instance = this;
     }
 
 
@@ -51,6 +56,16 @@ public class ControlBullet : MonoBehaviour
             Instantiate(particles, hitPoint, Quaternion.identity);
 
         }
+    }
+
+
+    public void effectEnemy(Transform posEnemy)
+    {
+        Instantiate(_fumacaEnemy, new Vector2(posEnemy.position.x, posEnemy.position.y + 1f), Quaternion.identity);
+
+        Instantiate(_item, posEnemy.position, Quaternion.identity);
+        Instantiate(_item, posEnemy.position, Quaternion.identity);
+
     }
 
 }

@@ -872,7 +872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078424631466946814}
   - component: {fileID: 3451846699845463957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gatuno
   m_TagString: Enemy
   m_Icon: {fileID: 0}

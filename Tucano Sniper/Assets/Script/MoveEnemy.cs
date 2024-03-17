@@ -21,13 +21,13 @@ public class MoveEnemy : MonoBehaviour
 
     [SerializeField] healthBar _healthBar;
 
-
     Rigidbody2D _Rg;
 
     void Start()
     {
        
         instance = this;
+ 
         _Rg = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
 
@@ -44,15 +44,7 @@ public class MoveEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bloco") && _dir == false)
-        {
-            _Speed = _Speed * -1;
-      
-            _dir = true;
-            
-            Invoke("TimerDir", 0.5f);
-        }
-
+        
         if (collision.gameObject.CompareTag("BalaTucano"))
         {
 
@@ -83,6 +75,18 @@ public class MoveEnemy : MonoBehaviour
         _anim.SetBool("Hit", false);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bloco") && _dir == false)
+        {
+            _Speed = _Speed * -1;
+
+            _dir = true;
+
+            Invoke("TimerDir", 0.5f);
+        }
+    }
+
     void TimerDir()
     {
         _dir = false;
@@ -109,8 +113,13 @@ public class MoveEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        Destroy(gameObject);
-        _Fumaca.SetActive(true);
-    }
+        Transform posEnemy = gameObject.transform;
 
+        //DropItens.instance.Drop();
+
+        ControlBullet.instance.effectEnemy(posEnemy);
+
+        Destroy(gameObject);
+
+    }
 }    

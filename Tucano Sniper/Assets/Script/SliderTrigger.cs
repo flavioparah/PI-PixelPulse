@@ -10,7 +10,12 @@ public class SliderTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IrProximaFase();
+
+        if (collision.gameObject.CompareTag("Marcador")) 
+        {
+            IrProximaFase();
+        }
+        
     }
 
     private void IrProximaFase()
