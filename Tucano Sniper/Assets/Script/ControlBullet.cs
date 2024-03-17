@@ -10,16 +10,21 @@ public class ControlBullet : MonoBehaviour
     [SerializeField] float force;
     [SerializeField] Transform _Pos;
     GameController _gameController;
-    public AudioSource audioSource; 
-
+    public AudioSource audioSource;
+    public static ControlBullet instance;
     GameObject novaBala;
 
     [SerializeField] ParticleSystem particles;
+    [SerializeField] ParticleSystem _fumacaEnemy;
+
+    [SerializeField] GameObject _item;
+
 
     void Start()
     {
+        instance = this;
         audioSource = GetComponent<AudioSource>();
-        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
+        
     }
 
 
@@ -54,6 +59,17 @@ public class ControlBullet : MonoBehaviour
             Instantiate(particles, hitPoint, Quaternion.identity);
 
         }
+
+
+    }
+
+    public void effectEnemy(Transform posEnemy)
+    {
+        Instantiate(_fumacaEnemy, new Vector2(posEnemy.position.x, posEnemy.position.y + 1f), Quaternion.identity);
+
+        Instantiate(_item, posEnemy.position, Quaternion.identity);
+        Instantiate(_item, posEnemy.position, Quaternion.identity);
+
     }
 
 }
