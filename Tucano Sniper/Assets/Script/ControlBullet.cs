@@ -59,10 +59,10 @@ public class ControlBullet : MonoBehaviour
             Instantiate(particles, hitPoint, Quaternion.identity);
 
         }
-
-
+       
     }
 
+     
     public void effectEnemy(Transform posEnemy)
     {
         Instantiate(_fumacaEnemy, new Vector2(posEnemy.position.x, posEnemy.position.y + 1f), Quaternion.identity);
