@@ -3353,7 +3353,7 @@ PrefabInstance:
     - target: {fileID: 4855818063985737160, guid: 6eebcbb2a4d6dc94aacd8d6435fa1a48, type: 3}
       propertyPath: _fumacaEnemy
       value: 
-      objectReference: {fileID: 198247871303120836, guid: e473029e4c70ad543a6879b82a732f4f, type: 3}
+      objectReference: {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
     - target: {fileID: 5165139440009340798, guid: 6eebcbb2a4d6dc94aacd8d6435fa1a48, type: 3}
       propertyPath: m_SortingOrder
       value: 9

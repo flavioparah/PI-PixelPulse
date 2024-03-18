@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.ParticleSystem;
 
 public class MoveEnemy : MonoBehaviour
@@ -23,6 +24,10 @@ public class MoveEnemy : MonoBehaviour
 
     Rigidbody2D _Rg;
 
+    string sceneName;
+
+    bool _isBossScene = false;
+
     void Start()
     {
        
@@ -32,12 +37,15 @@ public class MoveEnemy : MonoBehaviour
         _anim = GetComponent<Animator>();
 
         _healthBar.AlteraBarraDeVida(_Life);
+
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
 
     void Update()
     {
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
+
         Dead();
 
     }
@@ -104,6 +112,8 @@ public class MoveEnemy : MonoBehaviour
     {
         if (_Life <= 0) 
         {
+            _isBossScene = true;
+
             StartCoroutine(timeDead());
         }
         
@@ -111,6 +121,7 @@ public class MoveEnemy : MonoBehaviour
 
     IEnumerator timeDead()
     {
+
         yield return new WaitForSeconds(0.1f);
 
         Transform posEnemy = gameObject.transform;
@@ -121,5 +132,14 @@ public class MoveEnemy : MonoBehaviour
 
         Destroy(gameObject);
 
+        TelaScore();
+    }
+
+    void TelaScore()
+    {
+        if (sceneName == "Boss")
+        {
+            SceneManager.LoadScene("Score-screen");
+        }
     }
 }    
