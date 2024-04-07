@@ -12,7 +12,7 @@ public class OptionsMenu : MonoBehaviour
    
     public void SetVolume(float volume)
     {
-        _audioMixer.SetFloat("Tucano_Theme", volume);
+        _audioMixer.SetFloat("Tucano_Theme", volume);     
 
     }
 }
