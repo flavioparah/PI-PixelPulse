@@ -5,27 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public Transform Pause;
     public Transform pauseMenu;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public Transform optionsMenu;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseMenu.gameObject.activeSelf)
+            if (Pause.gameObject.activeSelf)
             {
-                pauseMenu.gameObject.SetActive(false);
+                Pause.gameObject.SetActive(false);
                 Time.timeScale = 1;
             }
             else
             {
-                pauseMenu.gameObject.SetActive(true);
+                Pause.gameObject.SetActive(true);
                 Time.timeScale = 0;
             }
         }
@@ -33,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenu.gameObject.SetActive(false);
+        Pause.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
     public void IrMenu()
@@ -45,6 +40,22 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Tucano");
         Time.timeScale = 1;
+    }
+
+    public void telaOptions()
+    {
+        pauseMenu.gameObject.SetActive(false);
+
+        optionsMenu.gameObject.SetActive(true);
+
+    }
+
+    public void closeB()
+    {
+        pauseMenu.gameObject.SetActive(true);
+
+        optionsMenu.gameObject.SetActive(false);
+
     }
 
 }
