@@ -46,8 +46,8 @@ public class MoveHeli : MonoBehaviour
         if (collision.gameObject.CompareTag("BlocoTiro"))
         {
             Debug.Log("Chamou?");
+            _ControlBullet.Heli();
 
-            
 
         }
     }
