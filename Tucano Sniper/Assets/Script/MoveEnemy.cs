@@ -130,6 +130,7 @@ public class MoveEnemy : MonoBehaviour
 
         ControlBullet.instance.effectEnemy(posEnemy);
 
+
         Destroy(gameObject);
 
         TelaScore();

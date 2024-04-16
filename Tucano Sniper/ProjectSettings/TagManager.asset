@@ -15,6 +15,7 @@ TagManager:
   - Terreo
   - Enemy
   - Marcador
+  - BlocoTiro
   layers:
   - Default
   - TransparentFX

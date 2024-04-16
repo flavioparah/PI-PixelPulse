@@ -48,7 +48,7 @@ public class MoveHeli : MonoBehaviour
             Debug.Log("Chamou?");
             _ControlBullet.Heli();
 
-
+           
         }
     }
 
