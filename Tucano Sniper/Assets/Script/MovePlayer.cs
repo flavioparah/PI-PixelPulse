@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 //using static UnityEditor.Progress;
 
@@ -101,7 +103,14 @@ public class MovePlayer : MonoBehaviour
             _colisaoDetectada = true;
             _Hit = true;      
 
-        }       
+        }
+
+
+        if (collision.gameObject.CompareTag("Exit"))
+        {
+              SceneManager.LoadScene("Score-screen");
+        }
+        
 
     }
 
@@ -145,19 +154,6 @@ public class MovePlayer : MonoBehaviour
         move();
     }
 
-    public void SetPulo (InputAction.CallbackContext value)
-    { 
-        JumpC();
-    }
-    void JumpC()
-    {
-        //if (_checkGround == true )
-        {
-            //_rig.velocity = new Vector2(_rig.velocity.x, 0);
-            //_rig.AddForce(new Vector2(0, 6f), ForceMode2D.Impulse);
-        }
-    }
-
     public void Dead()
     {
         if (GameController.instance. _Life <= 0)
@@ -167,6 +163,4 @@ public class MovePlayer : MonoBehaviour
         }
 
     }
-
-
 }

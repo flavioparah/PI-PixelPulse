@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,6 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] bool _dir;
     [SerializeField] ControlBullet _ControlBullet;
     public static MoveEnemy instance;
-    [SerializeField] Transform _transform;
-    [SerializeField] Transform _transformGato;
 
     [SerializeField] GameObject _Fumaca;
 
@@ -26,7 +25,8 @@ public class MoveEnemy : MonoBehaviour
 
     string sceneName;
 
-    bool _isBossScene = false;
+    public GameObject _placaExit;
+    public GameObject _paredeRight;
 
     void Start()
     {
@@ -112,35 +112,37 @@ public class MoveEnemy : MonoBehaviour
     {
         if (_Life <= 0) 
         {
-            _isBossScene = true;
-
-            StartCoroutine(timeDead());
+            //_isBossScene = true;
+            //TelaScore();
+        
+            timeDead();
+            
         }
         
     }
 
-    IEnumerator timeDead()
+    void timeDead()
     {
-
-        yield return new WaitForSeconds(0.1f);
 
         Transform posEnemy = gameObject.transform;
 
-        //DropItens.instance.Drop();
-
         ControlBullet.instance.effectEnemy(posEnemy);
-
 
         Destroy(gameObject);
 
-        TelaScore();
+        _placaExit.SetActive(true);
+        _paredeRight.SetActive(false);
+
     }
 
     void TelaScore()
     {
+        Debug.Log('2');
         if (sceneName == "Boss")
         {
+            Debug.Log('3');
             SceneManager.LoadScene("Score-screen");
         }
     }
+
 }    

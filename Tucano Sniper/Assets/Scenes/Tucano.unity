@@ -3184,7 +3184,6 @@ GameObject:
   m_Component:
   - component: {fileID: 943001532}
   - component: {fileID: 943001533}
-  - component: {fileID: 943001534}
   m_Layer: 0
   m_Name: "Obst\xE1culoControlle"
   m_TagString: Untagged
@@ -3222,18 +3221,6 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 6026006403931718905, guid: 5e1f30e191e3bc748ae83ceec64af2c8, type: 3}
   amountToPool: 0
---- !u!114 &943001534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943001531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c21f933bbc946479a8835b5e9c1d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &956562102
 GameObject:
   m_ObjectHideFlags: 0
@@ -7569,7 +7556,10 @@ PrefabInstance:
       propertyPath: _ControlBullet
       value: 
       objectReference: {fileID: 507552461}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7810839560113715260, guid: 68fc58516eecaae4fa0708f87fe27868, type: 3}
+    - {fileID: 3130290952362816980, guid: 68fc58516eecaae4fa0708f87fe27868, type: 3}
+    - {fileID: 7782381544377284750, guid: 68fc58516eecaae4fa0708f87fe27868, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2450725221998064694, guid: 68fc58516eecaae4fa0708f87fe27868, type: 3}

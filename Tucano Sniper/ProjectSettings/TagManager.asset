@@ -16,6 +16,7 @@ TagManager:
   - Enemy
   - Marcador
   - BlocoTiro
+  - Exit
   layers:
   - Default
   - TransparentFX
