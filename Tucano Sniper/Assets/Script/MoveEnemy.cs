@@ -11,7 +11,7 @@ public class MoveEnemy : MonoBehaviour
 
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
-    [SerializeField] bool _dir, _isBossScene;
+    [SerializeField] bool _dir, _isBossScene, isDead;
     [SerializeField] ControlBullet _ControlBullet;
     public static MoveEnemy instance;
 
@@ -30,9 +30,9 @@ public class MoveEnemy : MonoBehaviour
 
     void Start()
     {
-       
-        instance = this;
- 
+        _healthBar = GetComponentInChildren<healthBar>();
+
+
         _Rg = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
 
@@ -111,14 +111,11 @@ public class MoveEnemy : MonoBehaviour
 
     public void Dead()
     {
-        if (_Life <= 0) 
+        if (_Life <= 0 && !isDead)
         {
-           
-        
+            isDead = true;
             timeDead();
-            
         }
-        
     }
 
     void timeDead()

@@ -1505,6 +1505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barraDeVidaImage: {fileID: 1530020979}
+  _vidaImagem: 15
 --- !u!114 &733549997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3823,6 +3824,8 @@ MonoBehaviour:
   _Speed: 1
   _scaleX: 3
   _dir: 0
+  _isBossScene: 0
+  isDead: 0
   _ControlBullet: {fileID: 0}
   _Fumaca: {fileID: 0}
   _anim: {fileID: 1999320925}

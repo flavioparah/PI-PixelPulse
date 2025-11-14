@@ -18,6 +18,7 @@ TagManager:
   - BlocoTiro
   - Exit
   - ControlBullet
+  - HealthBarEnemy
   layers:
   - Default
   - TransparentFX

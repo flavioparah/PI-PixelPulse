@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class healthBar : MonoBehaviour
 {
     [SerializeField] Image _barraDeVidaImage;
+    [SerializeField] int _vidaImagem;
 
-    public void AlteraBarraDeVida(int vidaAtual) 
+    public void AlteraBarraDeVida(int vidaAtual)
     {
-        float _fillAmount = vidaAtual / 15f;
+        if (_barraDeVidaImage == null) return;  
 
+        float _fillAmount = (float)vidaAtual / _vidaImagem;
         _barraDeVidaImage.fillAmount = _fillAmount;
-
     }
 }
