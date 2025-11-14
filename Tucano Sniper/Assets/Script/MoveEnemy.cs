@@ -31,8 +31,8 @@ public class MoveEnemy : MonoBehaviour
     void Start()
     {
         _healthBar = GetComponentInChildren<healthBar>();
-
-
+       
+ 
         _Rg = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
 

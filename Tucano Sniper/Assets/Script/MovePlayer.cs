@@ -16,6 +16,7 @@ public class MovePlayer : MonoBehaviour
 
     bool _Hit;
     bool _colisaoDetectada = false;
+    bool isInvincible = false;
 
     public Transform worldPosition;
 
@@ -76,17 +77,32 @@ public class MovePlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bala") && !_colisaoDetectada)
+        if (collision.CompareTag("Bala") && !isInvincible)
         {
+            isInvincible = true;
             _gameController._Life--;
-            _colisaoDetectada = true;
             _Hit = true;
+
+         
+
+            StartCoroutine(PlayerInvencibilidade());
         }
 
         if (collision.CompareTag("Exit"))
         {
             SceneManager.LoadScene("Score-screen");
         }
+    }
+
+    IEnumerator PlayerInvencibilidade()
+    {
+        // tempo animado com hit
+        yield return new WaitForSeconds(0.2f);
+        _Hit = false;
+
+        // tempo imune
+        yield return new WaitForSeconds(1f);
+        isInvincible = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
