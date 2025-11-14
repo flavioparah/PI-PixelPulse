@@ -1,83 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static UnityEngine.ParticleSystem;
+﻿using UnityEngine;
 
 public class ControlBullet : MonoBehaviour
 {
+    [Header("Shoot Settings")]
+    public float force = 10f;
+    public float fireRate = 0.5f;   // Intervalo entre tiros (0.5 segundos)
+    private float nextFireTime = 0f;
 
-    [SerializeField] Rigidbody2D _Rg;
-    [SerializeField] float force;
-    [SerializeField] Transform _Pos;
+    [Header("References")]
+    public Transform shootPoint;      // _Pos
+    public GameObject bulletPrefab;
+
+    [Header("Effects")]
+    public ParticleSystem hitEffect;
+    public ParticleSystem enemySmoke;
+    public GameObject itemDrop;
+
     public static ControlBullet instance;
-    GameController _gameController;
-    public AudioSource audioSource;
-  
-    GameObject novaBala;
 
-    [SerializeField] ParticleSystem particles;
-    [SerializeField] ParticleSystem _fumacaEnemy;
-
-    [SerializeField] GameObject _item;
-
-
-    void Start()
+    void Awake()
     {
-       instance = this;
-        audioSource = GetComponent<AudioSource>();
-        
+        instance = this;
+    }
+
+    // =========================================
+    //   UNÇÃO PRINCIPAL DE TIRO COM COOLDOWN
+    // =========================================
+    public void Shoot()
+    {
+        // Ainda não pode atirar
+        if (Time.time < nextFireTime)
+            return;
+
+        // Atualiza cooldown
+        nextFireTime = Time.time + fireRate;
+
+        // Instancia a bala
+        GameObject bala = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+
+        // Aplica força
+        Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+
+        rb.AddForce(shootPoint.right * force, ForceMode2D.Impulse);
+
+        // Destroi depois de 1 segundo
+        Destroy(bala, 5f);
     }
 
 
-
-    public void Lacar()
-    {
-        transform.position = _Pos.transform.position;
-        _Rg.velocity = Vector2.zero;
-        _Rg.AddForce(-transform.right * force, ForceMode2D.Impulse);
-    }
-
-    public void LacarTucano()
-    {
-        novaBala = Instantiate(gameObject);
-        novaBala.transform.position = _Pos.transform.position;
-        novaBala.transform.rotation = _Pos.transform.rotation;
-        Rigidbody2D rbBala = novaBala.GetComponent<Rigidbody2D>();
-        rbBala.velocity = Vector2.zero;
-        rbBala.AddForce(novaBala.transform.right * force, ForceMode2D.Impulse);
-        audioSource.Play();
-        Destroy(novaBala, 1f);
-    }
-
-    public void Heli()
-    {
-        transform.position = _Pos.transform.position;
-        Debug.Log("Ola");
-       
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Enemy"))
-
-        {
-            Vector2 hitPoint = collision.ClosestPoint(transform.position);
-
-            Instantiate(particles, hitPoint, Quaternion.identity);
-
-        }
-       
-    }
-
-     
     public void effectEnemy(Transform posEnemy)
     {
-        Instantiate(_fumacaEnemy, new Vector2(posEnemy.position.x, posEnemy.position.y + 1f), Quaternion.identity);
-
-        Instantiate(_item, posEnemy.position, Quaternion.identity);
-        Instantiate(_item, posEnemy.position, Quaternion.identity);
-
+        Instantiate(enemySmoke, posEnemy.position, Quaternion.identity);
+        Instantiate(itemDrop, posEnemy.position, Quaternion.identity);
     }
-
 }

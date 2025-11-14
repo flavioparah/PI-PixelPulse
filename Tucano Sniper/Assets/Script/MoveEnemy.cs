@@ -11,7 +11,7 @@ public class MoveEnemy : MonoBehaviour
 
     [SerializeField] float _Speed;
     [SerializeField] float _scaleX;
-    [SerializeField] bool _dir;
+    [SerializeField] bool _dir, _isBossScene;
     [SerializeField] ControlBullet _ControlBullet;
     public static MoveEnemy instance;
 
@@ -47,6 +47,7 @@ public class MoveEnemy : MonoBehaviour
         _Rg.velocity = new Vector2(_Speed, _Rg.velocity.y);
 
         Dead();
+        TelaScore();
 
     }
 
@@ -104,7 +105,7 @@ public class MoveEnemy : MonoBehaviour
 
     public void lancar()
     {
-        _ControlBullet.Lacar();
+        _ControlBullet.Shoot();
 
     }
 
@@ -112,8 +113,7 @@ public class MoveEnemy : MonoBehaviour
     {
         if (_Life <= 0) 
         {
-            //_isBossScene = true;
-            //TelaScore();
+           
         
             timeDead();
             
@@ -126,23 +126,26 @@ public class MoveEnemy : MonoBehaviour
 
         Transform posEnemy = gameObject.transform;
 
-        ControlBullet.instance.effectEnemy(posEnemy);
+        //ControlBullet.instance.effectEnemy(posEnemy);
 
         Destroy(gameObject);
 
-        _placaExit.SetActive(true);
-        _paredeRight.SetActive(false);
+        //_placaExit.SetActive(true);
+        //_paredeRight.SetActive(false);
 
     }
 
     void TelaScore()
     {
-        Debug.Log('2');
         if (sceneName == "Boss")
         {
-            Debug.Log('3');
-            SceneManager.LoadScene("Score-screen");
+            if (_Life <= 0)
+            {
+                SceneManager.LoadScene("Score-screen");
+
+            }
         }
+
     }
 
 }    

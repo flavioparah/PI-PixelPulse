@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
+using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
+using System.Collections;
+
 public class GameController : MonoBehaviour
 {
     [Header("Score")]
@@ -22,9 +20,9 @@ public class GameController : MonoBehaviour
     [Header("GameOver")]
     public GameObject _GameOver;
 
-
     public static GameController instance;
-    void Start()
+
+    void Awake()
     {
         instance = this;
     }
@@ -32,6 +30,11 @@ public class GameController : MonoBehaviour
     void Update()
     {
         HealtLogic();
+
+        if (_Life <= 0)
+        {
+            ShowGamerOver();
+        }
     }
 
     public void UpdateScoreText()
@@ -39,56 +42,38 @@ public class GameController : MonoBehaviour
         _ScoreText.text = _TotalScore.ToString();
     }
 
+    // Atualiza os corações
     public void HealtLogic()
     {
-
-        if(_Life > _TotalLife) 
-        {
+        if (_Life > _TotalLife)
             _Life = _TotalLife;
-        }
 
         for (int i = 0; i < _Coracao.Length; i++)
         {
-            if (i < _Life) 
-            {
+            if (i < _Life)
                 _Coracao[i].sprite = _Cheio;
-            }
-            else 
-            {
+            else
                 _Coracao[i].sprite = _Vazio;
-            }
 
-            if (i < _TotalLife)
-            {
-                _Coracao[i].enabled = true;
-            }
-            else 
-            {
-                _Coracao[i].enabled = false;
-            }
-           
+            _Coracao[i].enabled = (i < _TotalLife);
         }
     }
 
-    public void ShowGamerOver() 
+    public void ShowGamerOver()
     {
         _GameOver.SetActive(true);
-
         StartCoroutine(ShowGameOverAnimation());
     }
 
     IEnumerator ShowGameOverAnimation()
     {
-
         yield return new WaitForSeconds(0.5f);
-
         Time.timeScale = 0f;
     }
 
-
     public void RestartGame(string lvlName)
     {
-        SceneManager.LoadScene(lvlName);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(lvlName);
     }
 }

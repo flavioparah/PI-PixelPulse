@@ -17,6 +17,7 @@ TagManager:
   - Marcador
   - BlocoTiro
   - Exit
+  - ControlBullet
   layers:
   - Default
   - TransparentFX

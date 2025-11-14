@@ -9,7 +9,7 @@ public class healthBar : MonoBehaviour
 
     public void AlteraBarraDeVida(int vidaAtual) 
     {
-        float _fillAmount = vidaAtual / 100f;
+        float _fillAmount = vidaAtual / 15f;
 
         _barraDeVidaImage.fillAmount = _fillAmount;
 

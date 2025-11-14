@@ -1,55 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-//using static UnityEditor.Progress;
+using System.Collections;
 
 public class MovePlayer : MonoBehaviour
 {
     [Header("Atributes")]
-    [SerializeField] float   _speed;
-    [SerializeField] float   _JumpFoce;
+    [SerializeField] float _speed = 5;
+    //[SerializeField] float _JumpFoce = 5;
     [SerializeField] float _moveH;
 
     [Header("Components")]
-    Animator               _anim;
-    public Rigidbody2D     _rig;
-    [SerializeField] GameObject _FumacaTucano;
+    Animator _anim;
+    public Rigidbody2D _rig;
 
-    bool            isFacingRight;
-    bool            _Hit;
-    bool            _colisaoDetectada = false;
+    bool _Hit;
+    bool _colisaoDetectada = false;
 
     public Transform worldPosition;
 
     [SerializeField] ControlBullet _ControlBullet;
 
-    public static MovePlayer instance;
     GameController _gameController;
 
     [SerializeField] Transform _transformFum;
     [SerializeField] Transform _transformTucano;
+    [SerializeField] GameObject _FumacaTucano;
 
     void Start()
     {
-        _gameController = (GameController)FindAnyObjectByType(typeof(GameController));
+        _gameController = GameController.instance;
+        _ControlBullet = GameObject.FindWithTag("ControlBullet").GetComponent<ControlBullet>();
 
         _rig = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
-        
     }
 
-    
     void Update()
     {
         anim();
         showGameOverM();
-       // _transformFum.position = new Vector2(_transformTucano.position.x, _transformTucano.position.y);
-
     }
 
     private void FixedUpdate()
@@ -58,109 +48,83 @@ public class MovePlayer : MonoBehaviour
         MouseControl();
     }
 
-    void move() 
+    void move()
     {
         _moveH = Input.GetAxisRaw("Horizontal");
-
         _rig.velocity = new Vector2(_moveH * _speed, _rig.velocity.y);
-
-      
-
-        
     }
 
-    public void MouseControl() 
+    public void MouseControl()
     {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        worldPosition.position = mousePos;
 
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.nearClipPlane;
-        worldPosition.position = Camera.main.ScreenToWorldPoint(mousePos);
-
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            _ControlBullet.LacarTucano();
+            _ControlBullet.Shoot();
         }
-
     }
 
-    public void anim() 
+    public void anim()
     {
         float correr = Mathf.Abs(_moveH);
-      _anim.SetFloat("correr", correr);
-      _anim.SetBool("Hit", _Hit);
-      _anim.SetFloat("VelocidadeY", _rig.velocity.y);
-      
+        _anim.SetFloat("correr", correr);
+        _anim.SetBool("Hit", _Hit);
+        _anim.SetFloat("VelocidadeY", _rig.velocity.y);
     }
 
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-
-        if (collision.gameObject.CompareTag("Bala") && !_colisaoDetectada)
+        if (collision.CompareTag("Bala") && !_colisaoDetectada)
         {
-            _gameController._Life -= 1;
+            _gameController._Life--;
             _colisaoDetectada = true;
-            _Hit = true;      
-
+            _Hit = true;
         }
 
-
-        if (collision.gameObject.CompareTag("Exit"))
+        if (collision.CompareTag("Exit"))
         {
-              SceneManager.LoadScene("Score-screen");
+            SceneManager.LoadScene("Score-screen");
         }
-        
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-               
-        if (collision.gameObject.CompareTag("Bala"))
+        if (collision.CompareTag("Bala"))
         {
             _colisaoDetectada = false;
-          
-        }
-
-        if (collision.gameObject.CompareTag("Bala"))
-        {          
-            _Hit = false;         
+            _Hit = false;
         }
     }
 
     void showGameOverM()
     {
-        if ( GameController.instance._Life <= 0)
+        if (_gameController._Life <= 0)
         {
             _colisaoDetectada = true;
             _Hit = true;
-
             StartCoroutine(timeShowGameOver());
-           
         }
     }
+
     IEnumerator timeShowGameOver()
     {
         yield return new WaitForSeconds(0.1f);
 
         Destroy(gameObject);
 
-        GameController.instance.ShowGamerOver();
-    }
+        _FumacaTucano.SetActive(true);
 
-    public void SetMovimento(InputAction.CallbackContext value)
-    {
-        move();
+        _gameController.ShowGamerOver();
     }
 
     public void Dead()
     {
-        if (GameController.instance. _Life <= 0)
+        if (_gameController._Life <= 0)
         {
             Destroy(gameObject);
             _FumacaTucano.SetActive(true);
         }
-
     }
 }
